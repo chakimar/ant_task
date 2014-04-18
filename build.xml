@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="build_ant_task" default="main">
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <javac destdir="classes">
+            <src path="src" />
+            <include name="**/*.java" />
+            <classpath>
+                <pathelement path="/usr/local/ant/lib/commons-lang-2.6.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="compress">
+        <jar jarfile="chakimar-ant-task.jar">
+            <fileset dir="classes"/>
+        </jar>
+    </target>
+    
+    <target name="main" depends="compile,compress"/>
+</project>

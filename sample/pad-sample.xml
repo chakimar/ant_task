@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pad-sample" default="main">
+    <target name="main">
+        <taskdef name="lpad" classname="name.chakimar.anttask.LeftPaddingTask" classpath="$ANT_HOME/lib/chakimar-ant-task.jar"/>
+        <taskdef name="rpad" classname="name.chakimar.anttask.RightPaddingTask" classpath="$ANT_HOME/lib/chakimar-ant-task.jar"/>
+        <lpad str="1234" size="10" padStr="0" property="lpad.result"/>
+        <echo>${lpad.result}</echo>
+        <rpad str="1234" size="10" padStr="0" property="rpad.result"/>
+        <echo>${rpad.result}</echo>
+    </target>
+</project>
