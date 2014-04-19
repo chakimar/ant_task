@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="freespace-sample" default="main">
+    <property environment="env"/>
+    <target name="main">
+        <taskdef name="freespace" classname="name.chakimar.anttask.FreeSpaceTask" classpath="${env.ANT_HOME}/lib/chakimar-ant-task.jar"/>
+        <freespace path="." requireFreeSpaceKb="100" property="result"/>
+        <echo>free 100kb is ... ${result}</echo>
+
+        <freespace path="." requireFreeSpaceKb="1024" property="result.1mb"/>
+        <echo>free 1mb is ... ${result.1mb}</echo>
+
+        <freespace path="." requireFreeSpaceKb="1048576" property="result.1gb"/>
+        <echo>free 1gb is ... ${result.1gb}</echo>
+
+        <freespace path="." requireFreeSpaceKb="1073741824" property="result.1tb"/>
+        <echo>free 1tb is ... ${result.1tb}</echo>
+
+    </target>
+</project>

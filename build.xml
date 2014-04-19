@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="build_ant_task" default="main">
+    <property environment="env"/>
+    <property name="jarfilename" value="chakimar-ant-task.jar"/>
     <target name="compile">
         <mkdir dir="classes"/>
         <javac destdir="classes">
             <src path="src" />
             <include name="**/*.java" />
             <classpath>
-                <pathelement path="/usr/local/ant/lib/commons-lang-2.6.jar"/>
+                <pathelement path="${env.ANT_HOME}/lib/commons-lang-2.6.jar"/>
+                <pathelement path="${env.ANT_HOME}/lib/commons-io-2.4.jar"/>
             </classpath>
         </javac>
     </target>
 
     <target name="compress">
-        <jar jarfile="chakimar-ant-task.jar">
+        <jar jarfile="${jarfilename}">
             <fileset dir="classes"/>
         </jar>
     </target>
     
+    <target name="deploy">
+       <move file="${jarfilename}" todir="${env.ANT_HOME}/lib"/>
+    </target>
+
     <target name="main" depends="compile,compress"/>
 </project>
